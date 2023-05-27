@@ -1,5 +1,5 @@
-resource "aws_iam_policy" "ssm_agent_policy" {
-  name        = "SSMAgentPolicy-agent"
+resource "aws_iam_policy" "ssm-agent" {
+  name        = "SSMAgentPolicy"
   description = "Policy for SSM Agent access"
   policy      = <<EOF
 {
@@ -46,9 +46,9 @@ resource "aws_iam_role" "ssm_agent_role" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "ssm_agent_policy_attachment" {
+resource "aws_iam_role_policy_attachment" "ssm-agent_attachment" {
   role       = aws_iam_role.ssm_agent_role.name
-  policy_arn = aws_iam_policy.ssm_agent_policy.arn
+  policy_arn = aws_iam_policy.ssm-agent.arn
 }
 
 /* resource "aws_instance" "example_instance" {
